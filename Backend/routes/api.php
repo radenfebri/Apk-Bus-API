@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\BusController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('buses', [BusController::class, 'index']);
+Route::post('buses', [BusController::class, 'store']);
+Route::get('buses/{bus}', [BusController::class, 'show']);
+Route::put('buses/{bus}', [BusController::class, 'update']);
+Route::delete('buses/{bus}', [BusController::class, 'destroy']);
