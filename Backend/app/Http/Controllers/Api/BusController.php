@@ -11,7 +11,12 @@ class BusController extends Controller
     public function index()
     {
         $buses = Bus::paginate();
-        return response()->json($buses);
+
+        if ($buses->count() > 0) {
+            return response()->json(['message' => 'Data Bus berhasil di GET', 'data' => $buses]);
+        } else {
+            return response()->json(['message' => 'Data Bus tidak ditemukan']);
+        }
     }
 
 
@@ -25,13 +30,22 @@ class BusController extends Controller
         ]);
 
         $bus = Bus::create($request->all());
-        return response()->json($bus);
+
+        if ($bus) {
+            return response()->json(['message' => 'Bus berhasil diinput', 'data' => $bus]);
+        } else {
+            return response()->json(['message' => 'Bus gagal diinput']);
+        }
     }
 
 
     public function show(Bus $bus)
     {
-        return response()->json($bus);
+        if ($bus) {
+            return response()->json(['message' => 'Bus berhasil diambil', 'data' => $bus]);
+        } else {
+            return response()->json(['message' => 'Bus tidak ditemukan']);
+        }
     }
 
 
@@ -45,14 +59,23 @@ class BusController extends Controller
         ]);
 
         $bus->update($request->all());
-        return response()->json($bus);
+        if ( ($bus)->exixts() ) {
+            return response()->json(['message' => 'Bus berhasil diupdate', 'data' => $bus]);
+        } else {
+            return response()->json(['message' => 'Bus gagal diupdate']);
+        }
     }
 
 
     public function destroy(Bus $bus)
     {
         $bus->delete();
-        return response()->json($bus);
+
+        if ($bus) {
+            return response()->json(['message' => 'Bus berhasil dihapus', 'data' => $bus]);
+        } else {
+            return response()->json(['message' => 'Bus gagal dihapus']);
+        }
     }
 
 }
