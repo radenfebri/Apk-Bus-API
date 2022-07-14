@@ -15,7 +15,7 @@ class BusController extends Controller
         if ($buses->count() > 0) {
             return response()->json(['message' => 'Data Bus berhasil di GET', 'data' => $buses]);
         } else {
-            return response()->json(['message' => 'Data Bus tidak ditemukan']);
+            return response()->json(['message' => 'Data Bus masih ksong']);
         }
     }
 
@@ -41,7 +41,7 @@ class BusController extends Controller
 
     public function show(Bus $bus)
     {
-        if ($bus) {
+        if ( ($bus)->exists() ) {
             return response()->json(['message' => 'Bus berhasil diambil', 'data' => $bus]);
         } else {
             return response()->json(['message' => 'Bus tidak ditemukan']);
@@ -59,7 +59,7 @@ class BusController extends Controller
         ]);
 
         $bus->update($request->all());
-        if ( ($bus)->exixts() ) {
+        if ($bus) {
             return response()->json(['message' => 'Bus berhasil diupdate', 'data' => $bus]);
         } else {
             return response()->json(['message' => 'Bus gagal diupdate']);

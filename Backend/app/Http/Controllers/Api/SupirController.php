@@ -16,7 +16,7 @@ class SupirController extends Controller
         if ($supirs->count() > 0) {
             return response()->json(['message' => 'Data Supir berhasil di GET', 'data' => $supirs]);
         } else {
-            return response()->json(['message' => 'Data Supir tidak ditemukan']);
+            return response()->json(['message' => 'Data Supir masih kosong']);
         }
     }
 
@@ -61,7 +61,7 @@ class SupirController extends Controller
 
         $supir->update($request->all());
 
-        if ( ($supir)->exists() ) {
+        if ($supir) {
             return response()->json(['message' => 'Supir berhasil diupdate', 'data' => $supir]);
         } else {
             return response()->json(['message' => 'Supir gagal diupdate']);
@@ -73,7 +73,7 @@ class SupirController extends Controller
     {
         $supir->delete();
 
-        if ( ($supir)->exists() ) {
+        if ($supir) {
             return response()->json(['message' => 'Supir berhasil dihapus', 'data' => $supir]);
         } else {
             return response()->json(['message' => 'Supir gagal dihapus']);
