@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\BusController;
+use App\Http\Controllers\Api\RuteController;
 use App\Http\Controllers\Api\SupirController;
 use App\Http\Controllers\Api\TerminalController;
 use Illuminate\Http\Request;
@@ -23,5 +24,7 @@ Route::resource('buses', BusController::class);
 Route::resource('supirs', SupirController::class);
 // ROUTE API TERMINALS
 Route::resource('terminals', TerminalController::class);
+// ROUTE API RUTES
+Route::resource('rutes', RuteController::class);
 
 
