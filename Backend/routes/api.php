@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\BusController;
+use App\Http\Controllers\Api\JadwalController;
 use App\Http\Controllers\Api\RuteController;
 use App\Http\Controllers\Api\SupirController;
 use App\Http\Controllers\Api\TerminalController;
@@ -26,5 +27,7 @@ Route::resource('supirs', SupirController::class);
 Route::resource('terminals', TerminalController::class);
 // ROUTE API RUTES
 Route::resource('rutes', RuteController::class);
+// ROUTE API JADWALS
+Route::resource('jadwals', JadwalController::class);
 
 

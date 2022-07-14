@@ -79,7 +79,7 @@ class TerminalController extends Controller
         $terminal->delete();
 
         if ($terminal) {
-            return response()->json(['message' => 'Terminal berhasil dihapus']);
+            return response()->json(['message' => 'Terminal berhasil dihapus', 'data' => $terminal]);
         } else {
             return response()->json(['message' => 'Terminal gagal dihapus']);
         }

@@ -116,7 +116,7 @@ class RuteController extends Controller
     public function destroy(Rute $rute)
     {
         if ($rute->delete()) {
-            return response()->json(['status' => 'Data Rute berhasil dihapus']);
+            return response()->json(['status' => 'Data Rute berhasil dihapus', 'data' => $rute]);
         } else {
             return response()->json(['status' => 'Data Rute gagal dihapus']);
         }
